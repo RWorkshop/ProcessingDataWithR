@@ -1,0 +1,32 @@
+---
+title: "``%xt%``: Simple Crosstabs Operator"
+author: "Kevin O'Brien"
+date: "11 November 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(furniture)
+library(ggplot2)
+```
+
+#### Description
+
+This operator takes two variables and computes a simple cross tab.
+
+#### Usage
+<pre><code>
+lhs %xt% rhs
+</code></pre>
+
+#### Arguments
+* ``lhs``: the left hand side of the operator, a vector
+* ``rhs``: the right hand side of the operator, a vector
+
+#### Examples
+```{r}
+data(diamonds)
+
+diamonds$color %xt% diamonds$clarity
+```

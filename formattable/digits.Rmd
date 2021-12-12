@@ -1,0 +1,29 @@
+---
+title: "``formattable::digits``: "
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(formattable)
+```
+
+digits Numeric vector showing pre-specific digits
+
+#### Description
+Numeric vector showing pre-specific digits
+
+#### Usage
+<pre><code>
+digits(x, digits, format = "f", ...)
+</code></pre>
+
+#### Arguments
+* ``x``: a numeric vector
+* ``digits``: an integer to indicate the number of digits to show.
+* ``format``: format type passed to formatC.
+* ``...``: additional parameters passed to formattable.
+
+#### Examples
+digits(pi, 2)
+digits(123.45678, 3)

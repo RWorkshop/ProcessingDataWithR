@@ -1,0 +1,34 @@
+
+---
+title: "``to_latex``: From Table 1 to Latex 2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(furniture)
+library(ggplot2)
+```
+
+
+
+#### Description
+
+Internal ``table1()`` and ``tableC()`` function for providing output = "latex2"
+
+#### Usage
+<pre><code>
+to_latex(tab, caption, align, len, splitby, float, booktabs, label,cor_type = NULL)
+</code></pre>
+
+#### Arguments
+
+* ``	tab	``: 	the table1 object
+* ``	caption	``: 	caption character vector
+* ``	align	``: 	align character vector
+* ``	len	``: 	the number of levels of the grouping factor
+* ``	splitby	``: 	the name of the grouping factor
+* ``	float	``: 	argument for latex formatting
+* ``	booktabs	``: 	add booktabs to latex table
+* ``	label	``: 	latex label option
+* ``	cor_type	``: 	optional argument regarding the correlation type (for tableC)

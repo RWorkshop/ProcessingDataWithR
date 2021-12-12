@@ -1,0 +1,37 @@
+---
+title: "``greg::caDescribeOpts``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(greg)
+```
+
+caDescribeOpts A function for gathering all the description options
+
+#### Description 
+
+Since there are so many different description options for the printCrudeAndAdjustedModel()
+function they have been gathered into a list. This function is simply a helper in order to generate a
+valid list.
+confint.ols 5
+#### Usage
+<pre><code>
+caDescribeOpts(show_tot_perc = FALSE, numb_first = TRUE,
+continuous_fn = describeMean, prop_fn = describeFactors,
+factor_fn = describeFactors, digits = 1, colnames = c("Total",
+"Event"))
+</code></pre>
+
+#### Arguments
+show_tot_perc Show percentages for the total column
+numb_first Whether to show the number before the percentages
+continuous_fn Stat function used for the descriptive statistics, defaults to describeMean()
+prop_fn Stat function used for the descriptive statistics, defaults to describeFactors() since there has to be a reference in the current setup.
+factor_fn Stat function used for the descriptive statistics, defaults to describeFactors()
+digits Number of digits to use in the descriptive columns. Defaults to the general digits
+if not specified.
+colnames The names of the two descriptive columns. By default Total and Event.
+Value
+list Returns a list with all the options

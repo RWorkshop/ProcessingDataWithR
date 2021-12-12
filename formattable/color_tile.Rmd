@@ -1,0 +1,25 @@
+---
+title: "``color_tile`` Create a color-tile formattert"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(formattable)
+```
+
+#### Description
+Create a color-tile formatter
+
+#### Usage
+<pre><code>
+color_tile(...)
+</code></pre>
+
+#### Arguments
+* ``...``: parameters passed to gradient.
+
+#### Examples
+```{r}
+formattable(mtcars, list(mpg = color_tile("white", "pink")))
+```

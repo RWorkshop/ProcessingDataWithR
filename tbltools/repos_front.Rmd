@@ -1,0 +1,33 @@
+---
+title: "``repos_front`` move vars to front"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tbltools)
+```
+
+#### Description
+move vars to front
+
+#### Usage
+<pre><code>
+repos_front(data, ...)
+</code></pre>
+
+#### Arguments
+* data data frame
+* ... columns to move to front
+
+#### Value
+Reordered data frame.
+
+#### Examples
+
+```{r}
+## data with row names
+d <- data.frame(x = rnorm(5), y = rnorm(5), row.names = letters[1:5])
+## move y to front
+repos_front(d, y)
+```

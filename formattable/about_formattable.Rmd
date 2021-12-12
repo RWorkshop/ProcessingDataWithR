@@ -1,0 +1,73 @@
+Package ‘formattable’
+==============
+
+* August 29, 2016
+* Title Create 'Formattable' Data Structures
+* Version 0.2.0.1
+
+#### Description 
+Provides functions to create formattable vectors and data frames. 'Formattable' vectors are printed with text formatting, and formattable data frames are printed with multiple types of formatting in HTML to improve the readability of data presented in tabular form rendered in web pages.
+
+* Depends R (> 3.0.2)
+* Date 2016-08-05
+* Imports methods, htmltools, htmlwidgets, knitr, rmarkdown
+* License MIT + file LICENSE
+* LazyData true
+* URL https://renkun.me/formattable,
+* https://github.com/renkun-ken/formattable
+* BugReports https://github.com/renkun-ken/formattable/issues
+* ByteCompile TRUE
+* Suggests testthat, DT, shiny, covr
+* RoxygenNote 5.0.1
+* VignetteBuilder knitr
+* NeedsCompilation no
+* Author Kun Ren [aut, cre],
+* Kenton Russell [aut]
+* Maintainer Kun Ren <ken@renkun.me>
+* Repository CRAN
+* Date/Publication 2016-08-05 11:53:18
+
+R topics documented:
+formattable-package . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+accounting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+area . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+as.datatable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+as.datatable.formattable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+as.htmlwidget . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+as.htmlwidget.formattable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+color_bar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+color_text . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+color_tile . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+comma . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+csscolor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+currency . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+digits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+formattable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+formattable.data.frame . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+formattable.Date . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+formattable.default . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+formattable.factor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+formattable.logical . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+formattable.numeric . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+formattable.POSIXct . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+formattable.POSIXlt . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+formattableOutput . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+formatter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+format_table . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+gradient . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+icontext . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+is.formattable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+normalize . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+normalize_bar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+percent . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+prefix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+proportion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+proportion_bar . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+qrank . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+renderFormattable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+scientific . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+style . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+suffix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+vmap . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+
+

@@ -1,0 +1,28 @@
+---
+title``: "``formattable::proportion``"
+output``: html_document
+---
+
+```{r setup, include=FALSE}
+knitr``:``:opts_chunk$set(echo = TRUE)
+library(formattable)
+```
+
+proportion Rescale a vector relative to the maximal absolute value in the vector
+
+#### Description
+Rescale a vector relative to the maximal absolute value in the vector
+
+#### Usage
+<pre><code>
+proportion(x, na.rm = FALSE)
+</code></pre>
+
+#### Arguments
+* ``x``: a numeric vector
+* ``na.rm``: a logical indicating whether missing values should be removed
+
+#### Examples
+```{r}
+proportion(mtcars$mpg)
+```
