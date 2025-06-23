@@ -1,46 +1,97 @@
-furniture
+# R Tutorial: The `furniture` Package
 
-#### Description
+The `furniture` package is designed to *make quantitative research more comfortable*. It offers streamlined tools to help you:
+- Create professional-looking descriptive tables
+- Clean up messy or placeholder data
+- Cross-tabulate categorical variables with chi-square tests
 
-The furniture package offers simple functions (i.e. pieces of furniture) and an operator that are
-aimed at helping applied researchers explore and communicate their data as well as clean their data
-in a tidy way. The package follows similar semantics to the "tidyverse" packages. It contains two
-main tools (along with an operator):
-• table1 provides a well-formatted descriptive table often seen as table 1 in academic journals
-(also a version that simplifies the output is available as simple_table1),
-• washer provides a simple way to clean up data where there are placeholder values, and
-• %xt% is an operator that takes two factor variables and creates a cross tabulation and tests for
-significance via a chi-square test.
+Let’s walk through its core tools.
 
-#### Details 
+---
 
-Table 1 is the main function in furniture. It is useful in both data exploration and data commu-
-nication. With minimal cleaning, the outputted table can be put into an academic, peer reviewed
-journal manuscript. As such, it is very useful in exploring your data when you have a stratifying
-variable. For example, if you are exploring whether the means of several demographic and behav-
-ioral characteristics are related to a health condition, the health condition (i.e. "yes" or "no"; "low",
-"mid", or "high"; or a list of conditions) as the stratifying variable. With little code, you can test
-for associations and check means or counts by the stratifying variable. See the vignette for more
-information.
-Note: furniture is meant to make life more comfortable and beautiful. In like manner, this package
-is designed to be "furniture" for quantitative research.long
-3
-Examples
-## Not run:
+## 1. Installing and Loading the Package
+
+```r
+install.packages("furniture")
 library(furniture)
-## Table 1
-data %>%
-table1(var1, var2, var3,
-splitby = ~groupvar,
-test = TRUE)
-## Table F
-data %>%
-tableF(var1)
-## Washer
-x = washer(x, 7, 8, 9)
-x = washer(x, is.na, value=0)
-## Crosstabs Operator
-f1 %xt% f2
-## End(Not run) 
+```
 
-``` 
+---
+
+## 2. `table1()` – Generate Descriptive Summary Tables
+
+This function creates publication-ready tables often used as **Table 1** in academic manuscripts, split by groups and including statistical tests.
+
+### Example:
+
+```r
+data %>%
+  table1(var1, var2, var3,
+         splitby = ~groupvar,
+         test = TRUE)
+```
+
+- `var1`, `var2`, `var3`: variables to summarize
+- `splitby = ~groupvar`: stratifies summaries by a grouping variable
+- `test = TRUE`: includes tests of association (e.g., chi-square or t-tests)
+
+For a simplified summary output, use `simple_table1()`.
+
+---
+
+## 3. `tableF()` – Quick Frequency Tables
+
+This is a lightweight function for inspecting frequencies of a single variable.
+
+```r
+data %>%
+  tableF(var1)
+```
+
+Ideal for checking counts or proportions at a glance.
+
+---
+
+## 4. `washer()` – Clean Placeholder Values
+
+This utility replaces specified placeholder values with either `NA` or a new value. Great for tidying survey data.
+
+### Replace placeholder codes (e.g., 7, 8, 9) with `NA`:
+
+```r
+x <- washer(x, 7, 8, 9)
+```
+
+### Replace `NA` values with a specific number:
+
+```r
+x <- washer(x, is.na, value = 0)
+```
+
+---
+
+## 5. `%xt%` – Cross-Tabulation with Chi-Square Test
+
+A custom infix operator for categorical variables. It returns a cross-tabulated table with a p-value from a chi-square test.
+
+```r
+f1 %xt% f2
+```
+
+- Both `f1` and `f2` must be factors.
+- Output includes counts and p-value for the test of independence.
+
+---
+
+## Summary
+
+| Feature        | Function/Operator | Purpose                                    |
+|----------------|-------------------|--------------------------------------------|
+| Descriptive Table | `table1()`         | Summary of variables by group with tests   |
+| Simple Table     | `simple_table1()`   | Lightweight version of `table1`            |
+| Frequency Table  | `tableF()`          | Count distribution of a single variable    |
+| Data Cleaning    | `washer()`          | Recode or clean placeholders or NAs        |
+| Cross-tabulation | `%xt%`              | Chi-square test between factor variables   |
+
+---
+
