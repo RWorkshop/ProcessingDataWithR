@@ -1,125 +1,96 @@
-Package ‘lemon’
-=====================
+## Package: `lemon` – Freshening Up Your `ggplot2` Plots
 
-October 30, 2018
+- **Version:** 0.4.2  
+- **Release Date:** 2018-10-30  
+- **URL:** [GitHub](https://github.com/stefanedwards/lemon)  
+- **Bug Reports:** [GitHub Issues](https://github.com/stefanedwards/lemon/issues)  
+- **CRAN Repository:** [CRAN - lemon](https://CRAN.R-project.org/package=lemon)
 
-* Type Package
-* Title Freshing Up your 'ggplot2' Plots
-* URL https://github.com/stefanedwards/lemon
-* BugReports https://github.com/stefanedwards/lemon/issues
-* Version 0.4.2
-* Date 2018-10-30
+### Description
+`lemon` enhances `ggplot2` by providing:
 
-#### Description 
-Functions for working with legends and axis lines of 'ggplot2', facets that repeat axis lines on all panels, and some 'knitr' extensions.
+- Greater control over legends and axis lines  
+- Faceting tools with repeated axis lines  
+- Utility functions and extensions for use with `knitr`
 
-* Depends R (>= 3.1.0)
-* Imports ggplot2 (>= 2.2.0), plyr, grid, gridExtra, gtable, knitr (>=
-1.12), lattice, scales
-* License GPL-3
-* Encoding UTF-8
-* LazyData true
-* RoxygenNote 6.1.0.9000
-* Collate 'ggplot2.r' 'lemon-plot.r' 'axis-annotation.r' 'brackets.R' 'coord-flex.r' 'coord-capped.r' 'dot.r' 'facet-rep-lab.r'
-'facet-wrap.r' 'geom-pointline.r' 'lemon_print.r' 'geom-siderange.r' 'grob_utils.r' 'gtable_show-.r'
-'guides-axis.r' 'legends.r' 'lemon.r' 'scale-symmetric.r' Suggests rmarkdown, stringr, dplyr, testthat
+### Technical Details
 
-* VignetteBuilder knitr
-* NeedsCompilation no
+- **Depends:** R (≥ 3.1.0)  
+- **Imports:** `ggplot2` (≥ 2.2.0), `plyr`, `grid`, `gridExtra`, `gtable`, `knitr` (≥ 1.12), `lattice`, `scales`  
+- **License:** GPL-3  
+- **Encoding:** UTF-8  
+- **LazyData:** TRUE  
+- **NeedsCompilation:** No  
+- **Vignette Builder:** `knitr`  
+- **Suggested packages:** `rmarkdown`, `stringr`, `dplyr`, `testthat`
 
-#### Authors 
+---
 
-Stefan McKinnon Edwards [aut, ctb, cre]
-(<https://orcid.org/0000-0002-4628-8148>),
-Baptiste Auguie [ctb] (For g_legend and grid_arrange_shared_legend),
-Shaun Jackman [ctb] (For grid_arrange_shared_legend),
-Hadley Wickham [ctb] (ggplot2 functions),
-Winston Chang [ctb] (ggplot2 functions)
-Maintainer Stefan McKinnon Edwards <sme@iysik.com>
-12
-.dot
-Repository CRAN
-Date/Publication 2018-10-30 20:50:03 UTC
-R topics documented:
-.dot . . . . . . . . . . . . .
-annotate_y_axis . . . . . . .
-brackets_horizontal . . . . .
-coord_capped_cart . . . . .
-coord_flex_cart . . . . . . .
-element_render . . . . . . .
-facet_rep_grid . . . . . . . .
-geom_pointpath . . . . . . .
-geom_siderange . . . . . . .
-get_panel_range . . . . . . .
-grid_arrange_shared_legend
-gtable_show_grill . . . . . .
-guidebox_as_column . . . .
-g_legend . . . . . . . . . . .
-is.small . . . . . . . . . . .
-lemon . . . . . . . . . . . .
-lemon_print . . . . . . . . .
-remove_labels_from_axis . .
-reposition_legend . . . . . .
-scale_x_symmetric . . . . 
+## Authors
 
+- **Stefan McKinnon Edwards** – Author, Contributor, Maintainer  
+  ORCID: [0000-0002-4628-8148](https://orcid.org/0000-0002-4628-8148)  
+  Email: `sme@iysik.com`  
+- **Baptiste Auguié** – Contributor (`g_legend`)  
+- **Shaun Jackman** – Contributor  
+- **Hadley Wickham & Winston Chang** – `ggplot2` functions
 
+---
 
+## Key Functions & Topics
 
+### `g_legend()`
+Extracts the `ggplot2` legend (guide-box) from a trained plot object.
 
-.
-.
-.
-Index
-.dot
-
-
-
-g_legend
-Extract ggplot legends
-Description
-Extracts the legend (’guide-box’) from a ggplot2 object.
-Usage
+```r
 g_legend(a.gplot)
-Arguments
-a.gplot
-ggplot2 or gtable object.
-Details
-The extraction is applied after the plot is trained and themes are applied. Modifying the legend is
-easiest by applying themes etc. to the ggplot2 object, before calling g_legend.
-An alternative method for extracting the legend is using gtable::gtable_filter:
+```
+
+**Argument:**  
+- `a.gplot`: a `ggplot2` or `gtable` object
+
+**Alternative approach:**
+
+```r
 gtable_filter(ggplotGrob(a.ggplot.obj), 'guide-box')
-This method however returns a gtable object which encapsulates the entire legend. The legend
-itself may be a collection of gtable. We have only noticed a problem with this extra layer when
-using the returned legend with arrangeGrob (see examples).
-Value
-gtable (grob) object. Draw with grid.draw.
-Author(s)
-Baptiste Auguié
-See Also
-grid_arrange_shared_legend, reposition_legend, gtable_filter20
-is.small
-Examples
+```
+
+**Returns:** A `gtable` object, which can be drawn using `grid.draw()`
+
+---
+
+## Example Use
+
+```r
 library(ggplot2)
 library(gtable)
 library(grid)
 library(gridExtra)
-library(gtable)
+
 dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
-(d <- ggplot(dsamp, aes(carat, price)) +
-geom_point(aes(colour = clarity)) +
-theme(legend.position='bottom'))
-legend <- g_legend(d)
+
+# Create a plot with a bottom-positioned legend
+p1 <- ggplot(dsamp, aes(carat, price)) +
+  geom_point(aes(colour = clarity)) +
+  theme(legend.position = 'bottom')
+
+legend <- g_legend(p1)
+
 grid.newpage()
 grid.draw(legend)
-(d2 <- ggplot(dsamp, aes(x=carat, fill=clarity)) +
-geom_histogram(binwidth=0.1) +
-theme(legend.position='bottom'))
-grid.arrange(d + theme(legend.position='hidden'),
-d2 + theme(legend.position='hidden'),
-bottom=legend$grobs[[1]])
-# Above fails with more than one guide
-legend2 <- gtable_filter(ggplotGrob(d), 'guide-box')
-grid.arrange(d + theme(legend.position='hidden'),
-d2 + theme(legend.position='hidden'),
-bottom=legend2$grobs[[1]]$grobs[[1]])
-# Above fails with more than one guide
+
+# Two plots using a shared legend
+p2 <- ggplot(dsamp, aes(x = carat, fill = clarity)) +
+  geom_histogram(binwidth = 0.1) +
+  theme(legend.position = 'bottom')
+
+grid.arrange(
+  p1 + theme(legend.position = 'hidden'),
+  p2 + theme(legend.position = 'hidden'),
+  bottom = legend$grobs[[1]]
+)
+```
+
+Note: Using multiple guides may require alternative methods.
+
+---
